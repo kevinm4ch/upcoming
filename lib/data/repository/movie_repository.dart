@@ -40,7 +40,8 @@ class MovieRepository extends ChangeNotifier {
 
       results.removeWhere(
         (m) => m['title'] == null || 
-          m['poster_path'] == null);
+          m['poster_path'] == null || 
+          m['backdrop_path'] == null);
 
       _movies.addAll(List.from(results.map((m) => Movie.fromJson(m))));
       _page++;

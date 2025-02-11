@@ -51,11 +51,13 @@ class _MoviesGridState extends State<MoviesGrid> {
                               ),
                             ),
 
-                            FadeInImage(
-                              placeholder: MemoryImage(kTransparentImage),
-                              image: NetworkImage(
-                                  "https://image.tmdb.org/t/p/w500/${m.posterPath}"),
-                              fit: BoxFit.cover,
+                            Positioned.fill(
+                              child: FadeInImage(
+                                placeholder: MemoryImage(kTransparentImage),
+                                image: NetworkImage(
+                                    "https://image.tmdb.org/t/p/w500/${m.posterPath}"),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                             
                             //Única maneira que encontrei de colocar o splash por cima da imagem e mantendo fadein
