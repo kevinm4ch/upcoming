@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:upcoming/data/models/movie_model.dart';
+import 'package:upcoming/data/repository/api.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   const MovieDetailScreen({super.key, required this.movie});
@@ -23,7 +24,7 @@ class MovieDetailScreen extends StatelessWidget {
                         fit: BoxFit.cover,
                         placeholder: MemoryImage(kTransparentImage),
                         image: NetworkImage(
-                            "https://image.tmdb.org/t/p/w500/${movie.backdropPath}"),
+                            "${Api.imagesUrl}/${movie.backdropPath}"),
                       ),
                     ),
                     Positioned(
@@ -31,7 +32,7 @@ class MovieDetailScreen extends StatelessWidget {
                       right: 0,
                       bottom: 0,
                       child: Container(
-                        height: 100,
+                        height: 200,
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
                                 begin: Alignment.topCenter,
@@ -56,17 +57,17 @@ class MovieDetailScreen extends StatelessWidget {
                   child: FadeInImage(
                     fit: BoxFit.cover,
                     placeholder: MemoryImage(kTransparentImage),
-                    image: NetworkImage(
-                        "https://image.tmdb.org/t/p/w500/${movie.posterPath}"),
+                    image: NetworkImage("${Api.imagesUrl}/${movie.posterPath}"),
                   ),
                 ),
                 Text(
-                                    movie.overview,
-                                    style: TextStyle(fontSize: 14.0, height: 1.5),
-                                  ),
+                  movie.overview,
+                  style: TextStyle(fontSize: 14.0, height: 1.5),
+                ),
               ],
             ),
           ),
+          //Retirar depois - só para testes de scroll
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {

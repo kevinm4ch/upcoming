@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:upcoming/data/models/movie_model.dart';
+import 'package:upcoming/data/repository/api.dart';
 import 'package:upcoming/data/repository/movie_repository.dart';
 import 'package:upcoming/screens/movie_detail_screen.dart';
 
@@ -55,7 +56,7 @@ class _MoviesGridState extends State<MoviesGrid> {
                               child: FadeInImage(
                                 placeholder: MemoryImage(kTransparentImage),
                                 image: NetworkImage(
-                                    "https://image.tmdb.org/t/p/w500/${m.posterPath}"),
+                                    "${Api.imagesUrl}/${m.posterPath}"),
                                 fit: BoxFit.cover,
                               ),
                             ),
