@@ -1,10 +1,10 @@
 class Movie {
     int id;
-    String? title;
-    String? overview;
+    String title;
+    String overview;
     DateTime releaseDate;
     double voteAverage;
-    String? posterPath;
+    String posterPath;
     String? backdropPath;
     List<int> genreIds;
 

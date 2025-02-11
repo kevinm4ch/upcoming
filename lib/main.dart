@@ -14,15 +14,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => MovieRepository(),)
+        ChangeNotifierProvider(create: (context) => MovieRepository(), )
       ],
       child: MaterialApp(
         title: 'Upcoming',
         darkTheme: ThemeData(
           brightness: Brightness.dark,
           appBarTheme: AppBarTheme(
-              foregroundColor: Color(0xFF1db8d8),
-              backgroundColor: Color(0xFF0d253f)),
+              backgroundColor: Color(0xFF0d253f),
+              titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              iconTheme: IconThemeData(size: 30)
+          ),
           scaffoldBackgroundColor: Color(0xFF242e34),
           useMaterial3: true,
         ),

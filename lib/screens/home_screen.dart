@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:upcoming/screens/movies_grid.dart';
+import 'package:provider/provider.dart';
+import 'package:upcoming/data/repository/movie_repository.dart';
+import 'package:upcoming/widgets/movies_grid.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    //Inicializa o provider num lugar seguro onde não ficar rebuildando
+    Provider.of<MovieRepository>(context, listen: false).getMovies();
+    
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -13,8 +18,6 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [Icon(Icons.upcoming), Text('Upcoming', style: TextStyle(fontWeight: FontWeight.bold),)]
           ),
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
-        foregroundColor: Theme.of(context).appBarTheme.foregroundColor,
       ),
       body: MoviesGrid(),
     );

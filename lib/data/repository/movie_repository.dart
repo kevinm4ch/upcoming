@@ -13,7 +13,8 @@ class MovieRepository extends ChangeNotifier {
 
   bool get isLoading => _isLoading;
 
-  List<Movie> get movies => [..._movies.sublist(0, (_movies.length - (_movies.length % 3)))];
+  List<Movie> get movies => _movies.sublist(0, (_movies.length - (_movies.length % 3)));
+
 
   String get _baseUrl =>
       "${Api.baseUrl}/movie/upcoming?language=pt-br&region=br&page=$_page";
@@ -36,6 +37,10 @@ class MovieRepository extends ChangeNotifier {
 
     if (response.statusCode == 200) {
       final results = response.data['results'] as List<dynamic>;
+
+      results.removeWhere(
+        (m) => m['title'] == null || 
+          m['poster_path'] == null);
 
       _movies.addAll(List.from(results.map((m) => Movie.fromJson(m))));
       _page++;
